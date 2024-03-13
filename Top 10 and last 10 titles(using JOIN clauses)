@@ -1,0 +1,21 @@
+# Top 10 titles in revenue gains:
+SELECT A.title,
+SUM(amount) AS revenue
+FROM film A
+INNER JOIN inventory B on A.film_id = B.film_id
+INNER JOIN rental C on B.inventory_id = C.inventory_id
+INNER JOIN payment D on C.rental_id = D.rental_id
+GROUP BY title
+ORDER BY revenue DESC
+LIMIT 10
+
+# Last 10 titles in revenue gains:
+SELECT A.title,
+SUM(amount) AS revenue
+FROM film A
+INNER JOIN inventory B on A.film_id = B.film_id
+INNER JOIN rental C on B.inventory_id = C.inventory_id
+INNER JOIN payment D on C.rental_id = D.rental_id
+GROUP BY title
+ORDER BY revenue ASC
+LIMIT 10
